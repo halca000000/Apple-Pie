@@ -7,9 +7,9 @@ class Person(models.Model):
     
 # Create your models here.
 class Post(models.Model):
-    created_at = models.DateField(auto_now_add=True, verbose_name='投稿日時')
-    text = models.TextField(verbose_name='ユーザー')
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='ユーザー')
+    created_at = models.DateField(auto_now_add=True, verbose_name='投稿日時')
+    text = models.TextField(verbose_name='本文')
 
     def __str__(self):
         return self.text
