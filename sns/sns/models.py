@@ -7,9 +7,11 @@ class Person(models.Model):
     
 # Create your models here.
 class Post(models.Model):
+
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='ユーザー')
     created_at = models.DateField(auto_now_add=True, verbose_name='投稿日時')
     text = models.TextField(verbose_name='本文')
+    image = models.ImageField(upload_to='imaeges/')
 
     def __str__(self):
         return self.text
