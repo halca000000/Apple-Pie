@@ -10,6 +10,9 @@ from .forms import SignUpForm
 #プロフィール
 from django.views import View
 from django.shortcuts import render, redirect
+#ログイン
+from .forms import SignUpForm, LoginForm
+from django.contrib.auth.views import LoginView, LogoutView
 
 # Create your views here.
 
@@ -33,4 +36,12 @@ class SignUpView(CreateView):
 #追加
 class ProfileView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'accounts/profile.html')
+        return render(request, 'app/profile.html')
+    
+#ログイン画面
+class UserLoginView(LoginView):  # 追加
+   template_name = 'app/login.html'
+   authentication_form = LoginForm
+       
+class UserLogoutView(LogoutView): # 追加
+   pass
