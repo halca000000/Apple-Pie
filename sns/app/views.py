@@ -13,6 +13,13 @@ from django.shortcuts import render, redirect
 #ログイン
 from .forms import SignUpForm, LoginForm
 from django.contrib.auth.views import LoginView, LogoutView
+#プロフィール2
+from django.views.generic.edit import CreateView, UpdateView
+from .forms import RegistForm, LoginForm , ProfileForm
+from django.views.generic import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin 
+from .models import User
+
 
 # Create your views here.
 
@@ -45,3 +52,18 @@ class UserLoginView(LoginView):  # 追加
        
 class UserLogoutView(LogoutView): # 追加
    pass
+
+class ProfileEditView(LoginRequiredMixin, UpdateView): # 追加
+   template_name = 'accounts/edit_profile.html'
+   model = User
+   form_class = ProfileForm
+   success_url = '/accounts/edit_profile/'
+   def get_object(self):
+       return self.request.user
+
+class UserListView(LoginRequiredMixin, ListView): # 追加
+   template_name = 'accounts/userlist.html'
+   model = User
+      
+   def get_queryset(self):       
+       return User.objects.all()
