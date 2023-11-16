@@ -1,12 +1,12 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from .models import CustomUser
 #ログイン
 from django.contrib.auth.forms import AuthenticationForm 
 
 class SignUpForm(UserCreationForm):
     class Meta:
-        model = User
+        model = CustomUser
         fields = ["username", "email", "password1", "password2"]
 
 #
@@ -23,7 +23,7 @@ class ProfileForm(forms.ModelForm):
            field.widget.attrs['class'] = 'form-control'
            
    class Meta:
-       model = User
+       model = CustomUser
        fields = ('username', 'email', 'avatar')
        help_texts = {
            'username': None,

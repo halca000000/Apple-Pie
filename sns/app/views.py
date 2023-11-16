@@ -15,10 +15,10 @@ from .forms import SignUpForm, LoginForm
 from django.contrib.auth.views import LoginView, LogoutView
 #プロフィール2
 from django.views.generic.edit import CreateView, UpdateView
-from .forms import RegistForm, LoginForm , ProfileForm
+from .forms import LoginForm , ProfileForm
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin 
-from .models import User
+from .models import CustomUser
 
 
 # Create your views here.
@@ -55,7 +55,7 @@ class UserLogoutView(LogoutView): # 追加
 
 class ProfileEditView(LoginRequiredMixin, UpdateView): # 追加
    template_name = 'accounts/edit_profile.html'
-   model = User
+   model = CustomUser
    form_class = ProfileForm
    success_url = '/accounts/edit_profile/'
    def get_object(self):
@@ -63,7 +63,7 @@ class ProfileEditView(LoginRequiredMixin, UpdateView): # 追加
 
 class UserListView(LoginRequiredMixin, ListView): # 追加
    template_name = 'accounts/userlist.html'
-   model = User
+   model = CustomUser
       
    def get_queryset(self):       
-       return User.objects.all()
+       return CustomUser.objects.all()

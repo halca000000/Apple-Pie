@@ -137,3 +137,6 @@ if DEBUG:
     MEDIA_ROOT = BASE_DIR / 'media'
 else:
     MEDIA_ROOT = f'/var/www/{BASE_DIR.name}/media'
+
+#カスタムユーザー
+AUTH_USER_MODEL = 'app.CustomUser'
