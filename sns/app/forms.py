@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
 #ログイン
 from django.contrib.auth.forms import AuthenticationForm 
-
+from .models import Post, Comment
 class SignUpForm(UserCreationForm):
     class Meta:
         model = CustomUser
@@ -29,3 +29,14 @@ class ProfileForm(forms.ModelForm):
            'username': None,
            'email':None,
        }
+
+#澤追加
+class PostCreationForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('text', 'image')
+
+class CommentCreationForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('text',)
