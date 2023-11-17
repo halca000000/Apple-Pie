@@ -19,15 +19,17 @@ class CustomUser(AbstractUser):
     
 # Create your models here.
 class Post(models.Model):
+    icon = models.ImageField(null=True, blank=True)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='ユーザー')
     created_at = models.DateField(auto_now_add=True, verbose_name='投稿日時')
-    text = models.TextField(verbose_name='本文')
+    text = models.TextField(max_length=255, verbose_name='本文'),
+    image = models.ImageField(upload_to = 'images', null = True, blank = True)
 
     def __str__(self):
         return self.text
 
 class Comment(models.Model):
-    text = models.TextField(verbose_name='コメント')
+    text = models.TextField(max_length=255, verbose_name='コメント')
     created_at = models.DateField(auto_now_add=True, verbose_name='返信日時')
     target = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name='対象の投稿')
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='ユーザー')
