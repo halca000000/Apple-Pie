@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block contents %}
+<div class = 'form-container'>
+    <div class = "form">
+    <form method = 'post' action = '{% url 'timelines:create' %}'>
+        {% csrf_token %}
+        <h2 style = 'text-align:center'>投稿</h2>
+        <div class = 'form-area'>
+            {% for field in form %}
+            <div class = 'userinfo'>
+                <div class = 'info'>
+                <label for = 'Username'><span>必須</span>投稿してください</label>
+                    <div class="mb-3">
+                        <textarea type="text" name = 'text' rows = '10' id = 'id_text'autocapitalize = 'none' autocomplete = 'username' class = 'form-control' placeholder = 'テキストを入力してください。' required autofocus></textarea>
+                    </div>
+                </div>
+            </div>
+            <p>
+                {% if field.help_text %}
+                {{ field.help_text }}
+                {% endif %}
+            </p>
+            <p>{{ field.errors }}</p>
+            {% endfor %}
+            <input type = 'submit'  onClick = 'return alertFunc()' class = 'btn_auth' value = '投稿する'>
+            {% if form.is_valid %}
+            <script>
+                function alertFunc() {
+                    alert("投稿完了！タイムラインに戻ります。");
+                }
+            </script>
+            {% endif %}
+        </div>
+    </form>
+</div>
+</div>
+{% endblock %}

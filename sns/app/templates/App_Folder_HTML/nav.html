@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block contents %}
+<div class = 'timeline'>
+  <h3>タイムライン</h3>
+</div>
+
+        {% for post in posts %}
+        <div class="card">
+          <div class="card-header">
+            {{ post.user }}<span class = 'created_at'>{{ post.created_at }}</span> 
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{ post.text|truncatechars:30 }}</p>
+            <a href='{% url 'timelines:detail' post.pk %}' style="text-decoration: none;"  class="btn-auth">投稿詳細</a>
+            <a href = '{% url 'timelines:userpost' post.user.id %}' style="text-decoration: none;" class = 'btn_auth'>
+                  {{ post.user.username }}の投稿一覧へ</a>
+          </div>
+        </div>
+
+        {% endfor %}
+{% endblock %}
