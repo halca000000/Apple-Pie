@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+<div class = 'form-container'>
+    <div class = "form">
+    <form method = 'post'>
+        {% csrf_token %}
+        <h2 style = 'text-align:center'>投稿</h2>
+        <div class = 'form-area'>
+            <div class = 'userinfo'>
+                <div class = 'info'>
+                <label for = 'Username'><span>必須</span>投稿してください</label>
+                    <div class="mb-3">
+                        {{ form.text }}
+                    </div>
+                </div>
+            </div>
+
+            <input type = 'submit' onClick = 'return alertFunc()' class = 'btn_auth' value = '投稿する'>
+            <script>
+                function alertFunc() {
+                    if(document.form.input01.value == ""){
+                        return false;
+                    } else {
+                    alert("投稿完了！タイムラインに戻ります。");
+                    return true;
+                    }
+                }
+            </script>
+        </div>
+    </form>
+</div>
+</div>
+
+{% endblock %}
