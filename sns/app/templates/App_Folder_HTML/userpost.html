@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+
+{% for post in object_list %}
+<div class="card">
+    <div class="card-header">
+      {{ post.user }}<span class = 'created_at'>{{ post.created_at }}</span> 
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{ post.text|truncatechars:30 }}</p>
+        <a href='{% url 'timelines:detail' post.pk %}' style="text-decoration: none;"  class="btn-auth">投稿詳細</a>
+        {% if post.user == user %}
+            <a href = '{% url 'timelines:delete' post.pk %}' class="btn btn-primary">削除する</a>
+            <a href = '{% url 'timelines:update' post.pk %}' class="btn btn-primary">更新</a>
+        {% endif %}
+
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

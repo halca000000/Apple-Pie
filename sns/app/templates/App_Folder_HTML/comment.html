@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+<div class = 'form-container'>
+    <div class = "form">
+    <form method = 'post'>
+        {% csrf_token %}
+        <h2 style = 'text-align:center'>返信する</h2>
+        <div class = 'form-area'>
+            <div class = 'userinfo'>
+                <div class = 'info'>
+                <label for = 'Username'><span>必須</span>返信内容を入力してください</label>
+                    <div class="mb-3">
+                        {{ form.text }}
+                    </div>
+                </div>
+            </div>
+            <input type = 'submit' value = '返信する' />
+        </div>
+    </div>
+</div>
+    
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+<div class="card">
+    <div class="card-header">
+      {{ post.user }}<span class = 'created_at'>{{ post.created_at }}</span> 
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{ post.text }}</p>
+        <form method = 'post'>
+            {% csrf_token %}
+            <input type = 'submit' class = 'btn btn-primary' onclick = 'return alertFunc()' value = '削除する'/>
+        </form>
+        <script>
+            function alertFunc() {
+                var del = confirm("本当に削除しますか？");
+                if (del == true) {
+                    return true;
+                } else {
+                    location.href = 'index/html'
+                    return false;
+                }
+            }
+        </script>
+    </div>
+</div>
+
+
+{% endblock %}
