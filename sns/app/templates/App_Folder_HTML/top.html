@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agriculture</title>
+    <link rel="stylesheet" href='{% static "App_Folder_css/top.css" %}' />
+  </head>
+  <body>
+
+    <div class="header">
+      <nav class="navbar">
+        <h2 class="logo"></h2>
+        <ul class="menu">
+          <li><a href="#">home</a></li>
+          <li><a href="#">about</a></li>
+          <li><a href="#">Post</a></li>
+          <li><a href="#">search</a></li>
+          <li><a href="#">login</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <script class="header">
+      const menu = document.querySelector(".menu");
+      const navbar = document.querySelector(".navbar");
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset >= menu.offsetTop) {
+          //stickyクラスをnavbarに付与する。
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      });
+    </script>
+   
+    <div class="title">
+      <h1>農業を愛する<br>
+        みなさまへ</h1>
+    </div>
+
+    <section>
+      <h2>Cross Scroll</h2>
+      <div class="img-wrap">
+        <class class="img"></class>
+      </div>
+    </section>
+
+    <section>
+      <h2>Cross Scroll</h2>
+      <div class="img-wrap">
+        <div class="img"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Cross Scroll</h2>
+      <div class="img-wrap">
+        <div class="img"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Cross Scroll</h2>
+      <div class="img-wrap">
+        <div class="img"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Cross Scroll</h2>
+      <div class="img-wrap">
+        <div class="img"></div>
+      </div>
+    </section>
+
+    <script src="{% static 'js/top.js' %}"></script>
+  </body>
+</html>
