@@ -24,14 +24,14 @@ from .models import CustomUser
 # Create your views here.
 
 class IndexView(TemplateView):
-  template_name = "app/index.html"
+  template_name = "App_Folder_HTML/index.html"
 
 class HomeView(TemplateView):
-    template_name = "app/home.html"
+    template_name = "App_Folder_HTML/home.html"
 
 class SignUpView(CreateView):
     form_class = SignUpForm
-    template_name = "app/signup.html"
+    template_name = "App_Folder_HTML/signup.html"
     success_url = reverse_lazy("app:home")
 
     def form_valid(self, form):
@@ -43,11 +43,11 @@ class SignUpView(CreateView):
 #追加
 class ProfileView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'app/profile.html')
+        return render(request, 'App_Folder_HTML/profile.html')
     
 #ログイン画面
 class UserLoginView(LoginView):  # 追加
-   template_name = 'app/login.html'
+   template_name = 'App_Folder_HTML/login.html'
    authentication_form = LoginForm
        
 class UserLogoutView(LogoutView): # 追加
