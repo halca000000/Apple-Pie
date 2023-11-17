@@ -17,6 +17,7 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email'] 
     
+    
 # Create your models here.
 class Post(models.Model):
     icon = models.ImageField(null=True, blank=True)
