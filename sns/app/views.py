@@ -78,7 +78,7 @@ class UserListView(LoginRequiredMixin, ListView): # 追加
    #さわ追加
 @method_decorator(login_required, name = 'dispatch')
 class NavView(ListView):
-    template_name = 'app/nav.html'
+    template_name = 'App_Foldeer_HTML/nav.html'
     context_object_name = 'posts'
 
     def get_queryset(self):
@@ -88,13 +88,13 @@ class NavView(ListView):
 @method_decorator(login_required, name = 'dispatch')
 class DetailView(DetailView):
     model = Post
-    template_name = 'app/detail.html'
+    template_name = 'App_Foldeer_HTML/detail.html'
 
 @method_decorator(login_required, name = 'dispatch')
 class PostCreatedView(CreateView):
     model = Post
     form_class = PostCreationForm
-    template_name = 'app/form.html'
+    template_name = 'App_Foldeer_HTML/form.html'
     success_url = reverse_lazy('timelines:index')
 
     def form_valid(self, form):
@@ -106,7 +106,7 @@ class PostCreatedView(CreateView):
 @method_decorator(login_required, name = 'dispatch')
 class PostDeleteView(DeleteView):
     model = Post
-    template_name = 'app/delete.html'
+    template_name = 'App_Foldeer_HTML/delete.html'
     success_url = reverse_lazy('timelines:index')
 
     def delete(self, request, *args, **kwargs):
@@ -120,14 +120,14 @@ class PostDeleteView(DeleteView):
 @method_decorator(login_required, name = 'dispatch')
 class PostUpdateView(UpdateView):
     model = Post
-    template_name = 'app/update.html'
+    template_name = 'App_Foldeer_HTML/update.html'
     form_class = PostCreationForm
     success_url = reverse_lazy('timelines:detail')
 
 @method_decorator(login_required, name = 'dispatch')
 class CommentCreateView(CreateView):
     model = Comment
-    template_name = 'comment.html'
+    template_name = 'App_Foldeer_HTML/comment.html'
     form_class = CommentCreationForm
     success_url = reverse_lazy('timelines:detail')
 
@@ -141,7 +141,7 @@ class CommentCreateView(CreateView):
         return redirect('timelines:detail', pk=post.pk)
 
 class UserPostView(ListView):
-    template_name = 'userpost.html'
+    template_name = 'App_Foldeer_HTML/userpost.html'
 
     def get_queryset(self):
         user_id = self.kwargs['user']
