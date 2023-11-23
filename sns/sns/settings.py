@@ -17,7 +17,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Tepmpateフォルダへの絶対パスを定義
-TEMPLATE_DIR = BASE_DIR / "Template"
+TEMPLATE_DIR = BASE_DIR / "Template/APP_Folder_HTML"
 
 # staticフォルダへの絶対パスを定義
 STATIC_DIR = BASE_DIR / "static"
